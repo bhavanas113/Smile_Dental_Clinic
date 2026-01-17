@@ -28,9 +28,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ==========================================
-   UPDATED: FIXED NAVBAR LOGIC
-   ========================================== */
+/* Navbar - UPDATED TO FIXED */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -40,19 +38,14 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0,0,0,0.05);
     
-    /* FIX: Changed from sticky to fixed for total persistence */
-    position: fixed; 
+    /* ADDED: Fix bar logic */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     
     z-index: 1000;
     transition: all 0.4s ease;
-}
-
-/* Adding a padding-top to body to prevent hero content from being hidden behind the fixed bar */
-body {
-    padding-top: 80px; 
 }
 
 .logo {
@@ -500,6 +493,18 @@ footer h3 {
 
     .menu-toggle {
         display: flex;
+        order: 2; /* Ensures it stays to the right of the logo */
+    }
+
+    /* FIX: Ensure logo doesn't squash on mobile */
+    .logo {
+        font-size: 1.4rem;
+        max-width: 70%;
+    }
+
+    /* FIX: Hide the overlapping top Book button on mobile */
+    .nav-links .btn-nav {
+        display: none;
     }
 
     /* Transforming nav-links into a mobile-friendly drawer */
@@ -524,6 +529,7 @@ footer h3 {
     .nav-links li {
         margin: 15px 0;
         width: 100%;
+        margin-left: 0; /* Reset desktop margin */
     }
 
     .nav-links a {
@@ -556,7 +562,8 @@ footer h3 {
         align-items: center;
     }
 
-    .btn-primary {
+    /* FIX: Make hero buttons readable on small screens */
+    .btn-primary, .btn-secondary {
         width: 100%;
         max-width: 280px;
         padding: 15px 30px;
