@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 130px; /* Accounts for top-header + fixed navbar height */
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 110px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -34,6 +44,29 @@
             <li><a href="#contact" class="btn-nav">Book Appointment</a></li>
         </ul>
     </nav>
+
+    <div class="mobile-bottom-nav">
+        <a href="#home" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#services" class="nav-item">
+            <i class="fas fa-tooth"></i>
+            <span>Services</span>
+        </a>
+        <a href="tel:+919876543210" class="nav-item call-hub">
+            <div class="pulse-ring"></div>
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="#gallery" class="nav-item">
+            <i class="fas fa-images"></i>
+            <span>Gallery</span>
+        </a>
+        <a href="#contact" class="nav-item">
+            <i class="fas fa-calendar-check"></i>
+            <span>Book</span>
+        </a>
+    </div>
 
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
