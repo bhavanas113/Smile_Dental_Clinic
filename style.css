@@ -28,7 +28,9 @@ body {
     overflow-x: hidden;
 }
 
-/* Navbar - Enhanced with Glassmorphism */
+/* ==========================================
+   UPDATED: FIXED NAVBAR LOGIC
+   ========================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -37,10 +39,20 @@ body {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0,0,0,0.05);
-    position: sticky;
+    
+    /* FIX: Changed from sticky to fixed for total persistence */
+    position: fixed; 
     top: 0;
+    left: 0;
+    width: 100%;
+    
     z-index: 1000;
     transition: all 0.4s ease;
+}
+
+/* Adding a padding-top to body to prevent hero content from being hidden behind the fixed bar */
+body {
+    padding-top: 80px; 
 }
 
 .logo {
@@ -410,6 +422,69 @@ footer h3 {
     border-radius: 2px;
 }
 
+/* NEW: Luxury Mobile Bottom Navigation Styling */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 25px;
+    padding: 10px 20px;
+    z-index: 2000;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-navy);
+    font-size: 0.65rem;
+    font-weight: 500;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+.call-hub {
+    background: var(--primary-blue);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 74, 173, 0.4);
+    transform: translateY(-15px);
+    position: relative;
+}
+
+.call-hub i { margin: 0; font-size: 1.4rem; }
+
+.pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    animation: ringPulse 2s infinite;
+    z-index: -1;
+}
+
+@keyframes ringPulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
 /* Media Query for Tablets and Mobile */
 @media (max-width: 992px) {
     .navbar { padding: 15px 5%; }
@@ -417,6 +492,12 @@ footer h3 {
 }
 
 @media (max-width: 768px) {
+    .mobile-bottom-nav { display: flex; } /* Show luxury bar on mobile */
+    body { 
+        padding-bottom: 80px; 
+        padding-top: 70px; /* Adjusted fixed header padding for mobile */
+    } 
+
     .menu-toggle {
         display: flex;
     }
@@ -454,42 +535,49 @@ footer h3 {
 
     /* Hero Section Mobile Fixes */
     .hero {
-        height: 85vh;
-        background-attachment: scroll; /* Disabling parallax for performance */
+        height: 100vh; /* Full screen impact */
+        background-attachment: scroll; 
     }
 
     .hero-content h1 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
+        letter-spacing: -1px;
     }
 
     .hero-content p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        opacity: 0.9;
     }
 
     .hero-btns {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
         align-items: center;
     }
 
     .btn-primary {
         width: 100%;
-        max-width: 300px;
+        max-width: 280px;
+        padding: 15px 30px;
     }
 
     /* Grid layout adjustments */
     .services, .gallery {
-        padding: 80px 5%;
+        padding: 60px 5%;
     }
 
     .section-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .services-grid, .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px;
+    }
+
+    .service-card {
+        padding: 40px 25px;
     }
 
     .top-header .header-flex {
@@ -497,6 +585,8 @@ footer h3 {
         gap: 5px;
         text-align: center;
     }
+
+    .floating-contact { display: none; } /* Hide old whatsapp icon for new bar */
 }
 
 /* Hamburger Menu "X" Animation */
