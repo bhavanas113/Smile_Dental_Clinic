@@ -498,13 +498,14 @@ footer h3 {
 
     /* FIX: Ensure logo doesn't squash on mobile */
     .logo {
-        font-size: 1.4rem;
-        max-width: 70%;
+        font-size: 1.1rem; /* Slightly smaller to prevent overlap */
+        max-width: 65%;
+        white-space: nowrap; /* Prevent logo from wrapping to two lines */
     }
 
-    /* FIX: Hide the overlapping top Book button on mobile */
+    /* FIX: Hide the overlapping top Book button on mobile specifically */
     .nav-links .btn-nav {
-        display: none;
+        display: none !important;
     }
 
     /* Transforming nav-links into a mobile-friendly drawer */
@@ -558,7 +559,7 @@ footer h3 {
     .hero-btns {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 15px; /* Added spacing to prevent button touch overlap */
         align-items: center;
     }
 
@@ -567,6 +568,7 @@ footer h3 {
         width: 100%;
         max-width: 280px;
         padding: 15px 30px;
+        text-align: center;
     }
 
     /* Grid layout adjustments */
