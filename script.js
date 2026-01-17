@@ -6,28 +6,27 @@ AOS.init({
 });
 
 // 2. ORIGINAL + UPDATED: Change navbar background and Smart Scroll logic
+// UPDATED: Ensuring navbar stays FIXED and visible always
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('.navbar');
     const currentScroll = window.pageYOffset;
 
-    // Original Logic
+    // Original Logic + Persistence Fix
     if (window.scrollY > 50) {
-        nav.style.padding = '15px 10%';
+        nav.style.padding = '12px 10%'; // Slightly more compact on scroll
         nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-        nav.style.background = 'rgba(255, 255, 255, 0.95)'; // Added for glass effect
+        nav.style.background = 'rgba(255, 255, 255, 0.98)'; // Solid glass effect
     } else {
         nav.style.padding = '20px 10%';
         nav.style.boxShadow = 'none';
         nav.style.background = 'var(--glass-bg)'; // Maintain your variable
     }
 
-    // ADVANCED: Smart Navbar Hide/Show on scroll
-    if (currentScroll > lastScroll && currentScroll > 500) {
-        nav.style.transform = 'translateY(-100%)'; // Hide on scroll down
-    } else {
-        nav.style.transform = 'translateY(0)'; // Show on scroll up
-    }
+    // ADVANCED: Smart Navbar Logic (FIXED: Stay visible always)
+    // We keep the transform at 0 to ensure it never hides behind the top edge
+    nav.style.transform = 'translateY(0)'; 
+    
     lastScroll = currentScroll;
 });
 
@@ -144,5 +143,36 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         menuToggle.classList.remove('is-active');
         navLinks.classList.remove('active');
+    });
+});
+
+// ==========================================
+// NEW: MOBILE SCROLL-SPY & UI ENHANCEMENT
+// ==========================================
+
+// 11. MOBILE: Highlight Bottom Nav active item on scroll
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    let current = "";
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navItems.forEach(item => {
+        item.style.color = 'var(--dark-navy)'; // Default color
+        const href = item.getAttribute('href');
+        if (href === `#${current}`) {
+            item.style.color = 'var(--primary-blue)'; // Highlight color
+        }
+        // Keep the call button white
+        if (item.classList.contains('call-hub')) {
+            item.style.color = 'white';
+        }
     });
 });
