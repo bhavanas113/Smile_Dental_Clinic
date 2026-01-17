@@ -16,6 +16,28 @@
             body {
                 padding-top: 110px;
             }
+            /* Fix for mobile overlapping: Hide desktop button in fixed nav on mobile */
+            .navbar .nav-links .btn-nav {
+                display: none;
+            }
+            /* Ensure logo and menu toggle have space */
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 5%;
+            }
+            /* Hero button stacking for mobile */
+            .hero-btns {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            .hero-btns a {
+                width: 100%;
+                max-width: 280px;
+            }
         }
     </style>
 </head>
@@ -174,6 +196,7 @@
             <div class="socials">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/919876543210"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p class="copyright">© 2026 Dr. Siddhi's Smile Clinic. All Rights Reserved.</p>
         </div>
