@@ -14,11 +14,20 @@ window.addEventListener('scroll', () => {
 
     // Original Logic + Persistence Fix
     if (window.scrollY > 50) {
-        nav.style.padding = '12px 10%'; // Slightly more compact on scroll
+        // MOBILE FIX: Use smaller padding on mobile to prevent overlapping
+        if (window.innerWidth <= 768) {
+            nav.style.padding = '8px 5%';
+        } else {
+            nav.style.padding = '12px 10%'; // Slightly more compact on scroll
+        }
         nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
         nav.style.background = 'rgba(255, 255, 255, 0.98)'; // Solid glass effect
     } else {
-        nav.style.padding = '20px 10%';
+        if (window.innerWidth <= 768) {
+            nav.style.padding = '15px 5%';
+        } else {
+            nav.style.padding = '20px 10%';
+        }
         nav.style.boxShadow = 'none';
         nav.style.background = 'var(--glass-bg)'; // Maintain your variable
     }
@@ -141,8 +150,8 @@ if (menuToggle) {
 // 10. MOBILE: Close menu when a link is clicked
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
-        menuToggle.classList.remove('is-active');
-        navLinks.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('is-active');
+        if (navLinks) navLinks.classList.remove('active');
     });
 });
 
