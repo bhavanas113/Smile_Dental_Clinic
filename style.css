@@ -616,3 +616,53 @@ footer h3 {
 #mobile-menu.is-active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
+
+/* ==========================================
+   FINAL FIX FOR SMALL MOBILE LETTERS
+   ========================================== */
+@media (max-width: 480px) {
+    /* Force larger base font size for mobile */
+    html {
+        font-size: 16px !important;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.8rem !important; /* Makes title bold and readable */
+        line-height: 1.2 !important;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem !important; /* Larger description */
+        line-height: 1.5 !important;
+    }
+
+    .section-title {
+        font-size: 2.4rem !important;
+        margin-bottom: 40px !important;
+    }
+
+    .service-card h3 {
+        font-size: 1.6rem !important;
+    }
+
+    .service-card p {
+        font-size: 1.1rem !important; /* Prevents tiny text in boxes */
+        line-height: 1.6 !important;
+    }
+
+    .gallery-info h3 {
+        font-size: 1.4rem !important;
+    }
+
+    .gallery-info p {
+        font-size: 1rem !important;
+    }
+
+    footer h3 {
+        font-size: 2rem !important;
+    }
+
+    .footer-content p {
+        font-size: 1.1rem !important;
+    }
+}
