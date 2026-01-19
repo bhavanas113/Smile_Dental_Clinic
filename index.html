@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Dr. Siddhi's Smile Clinic | Dental Care</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -12,10 +12,34 @@
         body {
             padding-top: 130px; /* Accounts for top-header + fixed navbar height */
         }
+
+        /* NEW ADDITIONS FOR MOBILE READABILITY */
         @media (max-width: 768px) {
+            html {
+                font-size: 16px; /* Ensures base font isn't too small */
+            }
             body {
                 padding-top: 110px;
+                line-height: 1.6;
             }
+            /* Making headings much larger on mobile */
+            .hero-content h1 {
+                font-size: 2.8rem !important; 
+                line-height: 1.2 !important;
+            }
+            .hero-content p {
+                font-size: 1.2rem !important;
+            }
+            .section-title {
+                font-size: 2.4rem !important;
+            }
+            .service-card h3 {
+                font-size: 1.6rem !important;
+            }
+            .service-card p {
+                font-size: 1.1rem !important;
+            }
+
             /* Fix for mobile overlapping: Hide desktop button in fixed nav on mobile */
             .navbar .nav-links .btn-nav {
                 display: none;
@@ -37,6 +61,8 @@
             .hero-btns a {
                 width: 100%;
                 max-width: 280px;
+                padding: 18px 20px !important; /* Larger touch target */
+                font-size: 1.1rem !important;
             }
         }
     </style>
@@ -199,5 +225,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
