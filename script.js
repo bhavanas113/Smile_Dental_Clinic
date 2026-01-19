@@ -185,3 +185,24 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+// ==========================================
+// NEW ADDITION: FINAL MOBILE READABILITY FIX
+// ==========================================
+
+// 12. Fix small font issue by injecting dynamic viewport scaling on mobile
+const adjustForMobileText = () => {
+    if (window.innerWidth <= 480) {
+        // Ensure the body doesn't allow the browser to auto-shrink text
+        document.body.style.webkitTextSizeAdjust = "100%";
+        
+        // Specifically check if headings are too small and boost them
+        const mainHeading = document.querySelector('.hero-content h1');
+        if (mainHeading) {
+            mainHeading.style.fontSize = "2.8rem";
+        }
+    }
+};
+
+window.addEventListener('resize', adjustForMobileText);
+window.addEventListener('DOMContentLoaded', adjustForMobileText);
